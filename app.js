@@ -48,10 +48,10 @@ console.log(uploaddir);
 
 const mysql = require('mysql');
 
-// jobsstaging for test DB
+// These details will need to be filled out for the SQL server in use
 const dbConfig = {
-    host: 'localhost',
-    user: 'root',
+    host: '',
+    user: '',
     password: '',
     database: 'jobs',
     timezone: 'utc'
@@ -67,9 +67,9 @@ setInterval(function () {
     connection.query('SELECT 1');
 }, 5000);
 
-// API for AIT Job Sheets
-
 // Log-In functions
+
+// This function makes a user account by refering the API and filling out the details. This was done instead of making a sign-up page for ease. 
 
 // ----------- IMPORTANT -----------------
 // Use this to create users and run it as localhost:8090/createAdmin on server in web-browser
@@ -328,16 +328,15 @@ app.post('/newJobSheet', upload.any(), verifyToken,  function (req, resp) {
                     host: 'smtp.office365.com', 
                     port: 587,
                     auth: {
-                        user: 'jobsheets@ardenit.net',
-                        pass: 'Yam28835'
+                        user: '',
+                        pass: ''
                     },
                     tls: {rejectUnauthorized: false,},
                 })
         
-                // Must ensure that to: is expenses@ardenit.net
                 const mailOptions = {
-                    from: 'jobsheets@ardenit.net',
-                    to: 'billy@ardenit.net',
+                    from: '',
+                    to: '',
                     subject: 'Job Sheet: ' + jobID,
                     text: 'Please find attached the job sheet and receipt(s) for Job Number ' + jobID,
                     attachments: fileArray
